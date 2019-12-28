@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Simple Airbnb</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  <form class="form-inline my-2 my-lg-0 method="get" action="flats/new">
+   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Flat</button>
+</form>
+</nav>
+
+<h1>All our flats(6)</h1>
+
+
+    <div class="d-flex">
+      <% @flats.each do |flat| %>
+        <div class="d-flex justify-content-between">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                    <%= flat[:name] %> (<%= flat[:address] %>)
+                     <p><%= flat[:description] %></p>
+                      <p><%= flat[:price_per_night] %> <i class="fas fa-euro-sign"></i>
+                       <%= flat[:number_of_guests] %> <i class="fas fa-users"></i></p>
+                      <%= link_to "Commentaires", flat_path(flat) %>
+                      <%= link_to "Supprimer", flat_path(flat),
+                        method: :delete,
+                        data: { confirm: "Etes vous sur de vouloir supprimer cet appartement?" } %>
+                      <%= link_to "Editer", edit_flat_path(flat) %>
+            </li>
+              <% end %>
+          </ul>
+       </div>
+    </div>
+
+
+
+
+
+
+
